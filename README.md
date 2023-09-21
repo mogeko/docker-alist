@@ -1,5 +1,8 @@
 # container-alist
 
+[![Build and Test Container](https://github.com/mogeko/container-alist/actions/workflows/test.yml/badge.svg)](https://github.com/mogeko/container-alist/actions/workflows/test.yml)
+[![Image Size](https://img.shields.io/docker/image-size/mogeko/vlmcsd?logo=docker)](https://github.com/mogeko/container-alist/pkgs/container/alist)
+
 A distroless and rootless container for [Alist](https://github.com/alist-org/alist).
 
 ## Usage
@@ -47,7 +50,7 @@ Since (as I know) the Docker cannot map the UID/GID of the host to the specified
 
 ## "Distroless" Container Images
 
-Learn more about distroless container images: [GoogleContainerTools/distroless](https://github.com/GoogleContainerTools/distroless)
+Learn more about [distroless container images](https://github.com/GoogleContainerTools/distroless).
 
 ## License
 
