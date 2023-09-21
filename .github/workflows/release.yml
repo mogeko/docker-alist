@@ -20,6 +20,10 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install qemu dependency
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y qemu-user-static
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v5.0.0
@@ -32,14 +36,17 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
-      - uses: redhat-actions/buildah-build@v2.12
+      - name: Build image with Buildah
+        uses: redhat-actions/buildah-build@v2.12
         id: build-image
         with:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           containerfiles: ./Dockerfile
+          archs: amd64, arm64, s390x, ppc64le
           layers: false
-      - uses: redhat-actions/push-to-registry@v2.7.1
+      - name: Push image to Container Registry
+        uses: redhat-actions/push-to-registry@v2.7.1
         with:
           image: ${{ steps.build-image.outputs.image }}
           tags: ${{ steps.build-image.outputs.tags }}
