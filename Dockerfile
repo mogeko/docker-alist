@@ -22,7 +22,7 @@ LABEL org.opencontainers.image.licenses="MIT"
 COPY --from=builder /opt/source/bin/alist /usr/bin/alist
 
 VOLUME [ "/opt/alist/data" ]
-EXPOSE 5244 5245
+EXPOSE 5244/tcp 5245/tcp
 
 ENTRYPOINT [ "/usr/bin/alist" ]
 CMD [ "server", "--data", "/opt/alist/data", "--no-prefix" ]
