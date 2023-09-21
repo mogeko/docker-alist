@@ -5,9 +5,3 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-
-  # Maintain dependencies for docker
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "weekly"
