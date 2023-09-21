@@ -11,11 +11,14 @@ permissions:
 
 jobs:
   release:
+    strategy:
+      matrix:
+        archs: ["amd64", "arm64", "s390x", "ppc64le"]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.0.0
       - name: Log in to Docker Hub
-        uses: redhat-actions/podman-login@v1
+        uses: redhat-actions/podman-login@v1.6
         with:
           registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -49,7 +52,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           containerfiles: ./Dockerfile
-          archs: amd64, arm64, s390x, ppc64le
+          archs: ${{ matrix.archs }}
           layers: false
       - run: |
           podman run -d --name alist ${IMAGE}
