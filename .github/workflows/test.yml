@@ -1,0 +1,24 @@
+name: Build and Test Container
+
+on:
+  push:
+    branches-ignore: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.1.0
+      - uses: redhat-actions/buildah-build@v2.12
+        with:
+          containerfiles: Dockerfile
+          tags: localhost/alist:latest
+      - run: podman run --rm localhost/alist:latest --help
+      - run: podman run --rm localhost/alist:latest version
+      - run: |
+          podman run -d --name alist localhost/alist:latest
+          podman exec alist /usr/bin/alist admin random
+          podman rm -f alist
