@@ -1,7 +1,7 @@
 # container-alist
 
 [![Build and Test Container](https://github.com/mogeko/container-alist/actions/workflows/test.yml/badge.svg)](https://github.com/mogeko/container-alist/actions/workflows/test.yml)
-[![Image Size](https://img.shields.io/docker/image-size/mogeko/vlmcsd?logo=docker)](https://github.com/mogeko/container-alist/pkgs/container/alist)
+[![Image Size](https://img.shields.io/docker/image-size/mogeko/container-alist?logo=docker)](https://github.com/mogeko/container-alist/pkgs/container/alist)
 
 A distroless and rootless container for [Alist](https://github.com/alist-org/alist).
 
