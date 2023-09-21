@@ -15,9 +15,13 @@ FROM gcr.io/distroless/base-debian12:nonroot
 
 WORKDIR /opt/alist
 
+LABEL org.opencontainers.image.description="A distroless and rootless container for Alist"
+LABEL org.opencontainers.image.author="Zheng Junyi <zhengjunyi@live.comn>"
+LABEL org.opencontainers.image.licenses="MIT"
+
 COPY --from=builder /opt/source/bin/alist /usr/bin/alist
 
-VOLUME /opt/alist/data
+VOLUME [ "/opt/alist/data" ]
 EXPOSE 5244 5245
 
 ENTRYPOINT [ "/usr/bin/alist" ]
