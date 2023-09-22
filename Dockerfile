@@ -13,14 +13,12 @@ RUN git clone https://github.com/alist-org/alist.git . \
 
 FROM gcr.io/distroless/base-debian12:nonroot
 
-WORKDIR /opt/alist
-
 LABEL org.opencontainers.image.author="Zheng Junyi <zhengjunyi@live.comn>"
 
 COPY --from=builder /opt/source/bin/alist /usr/bin/alist
 
-VOLUME [ "/opt/alist/data" ]
+VOLUME [ "/mnt/data" ]
 EXPOSE 5244/tcp 5245/tcp
 
 ENTRYPOINT [ "/usr/bin/alist" ]
-CMD [ "server", "--data", "/opt/alist/data", "--no-prefix" ]
+CMD [ "server", "--data", "/mnt/data" ]

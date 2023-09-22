@@ -15,7 +15,7 @@ Set up a Alist server with the following command:
 podman run -d \
     --name alist \
     --userns=keep-id:uid=65532,gid=65532 \
-    -v /path/to/save/data:/opt/alist/data \
+    -v /path/to/save/data:/mnt/data \
     -p 5244:5244 \
     ghcr.io/mogeko/alist:latest
 ```
