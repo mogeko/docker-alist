@@ -55,14 +55,6 @@ jobs:
           containerfiles: ./Dockerfile
           archs: ${{ matrix.archs }}
           layers: false
-      - name: Run image with Podman for testing
-        run: |
-          podman run -d --pull never --arch ${ARCH} --name alist ${IMAGE}
-          podman exec alist /usr/bin/alist admin random
-          podman rm -f alist
-        env:
-          IMAGE: ${{ steps.build-image.outputs.image-with-tag }}
-          ARCH: ${{ matrix.archs }}
       - name: Push image to Container Registries
         uses: redhat-actions/push-to-registry@v2.7.1
         with:

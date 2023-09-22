@@ -16,8 +16,8 @@ jobs:
         with:
           containerfiles: ./Dockerfile
           tags: localhost/alist:latest
-      - run: podman run --rm localhost/alist:latest --help
-      - run: podman run --rm localhost/alist:latest version
+      - run: podman run --rm --pull never localhost/alist:latest --help
+      - run: podman run --rm --pull never localhost/alist:latest version
       - run: |
           podman run -d --pull never --name alist localhost/alist:latest
           podman exec alist /usr/bin/alist admin random
