@@ -19,6 +19,6 @@ jobs:
       - run: podman run --rm localhost/alist:latest --help
       - run: podman run --rm localhost/alist:latest version
       - run: |
-          podman run -d --name alist localhost/alist:latest
+          podman run -d --pull never --name alist localhost/alist:latest
           podman exec alist /usr/bin/alist admin random
           podman rm -f alist

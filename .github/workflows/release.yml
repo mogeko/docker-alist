@@ -45,6 +45,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
+            type=sha
       - name: Build image with Buildah
         uses: redhat-actions/buildah-build@v2.12
         id: build-image
@@ -56,7 +57,7 @@ jobs:
           layers: false
       - name: Run image with Podman for testing
         run: |
-          podman run --arch ${ARCH} -d --name alist ${IMAGE}
+          podman run -d --pull never --arch ${ARCH} --name alist ${IMAGE}
           podman exec alist /usr/bin/alist admin random
           podman rm -f alist
         env:
