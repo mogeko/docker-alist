@@ -47,7 +47,7 @@ jobs:
             git add    --all Dockerfile
             git commit --message "chore: bump version to ${TAG}"
             git tag    --annotate ${TAG} --message "${TAG}"
-            git push   --tags origin
+            git push   --follow-tags origin HEAD:${GITHUB_REF}
           fi
         env:
           TAG: ${{ needs.check.outputs.tag }}
