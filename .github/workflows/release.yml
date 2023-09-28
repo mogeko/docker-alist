@@ -11,9 +11,6 @@ permissions:
 
 jobs:
   release:
-    strategy:
-      matrix:
-        archs: ["amd64", "arm64", "s390x", "ppc64le"]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.0
@@ -53,7 +50,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           containerfiles: ./Dockerfile
-          archs: ${{ matrix.archs }}
+          archs: amd64, arm64, s390x, ppc64le
           layers: false
       - name: Push image to Container Registries
         uses: redhat-actions/push-to-registry@v2.7.1

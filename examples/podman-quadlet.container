@@ -1,0 +1,21 @@
+# Run Alist by Systemd Units using Podman Quadlet.
+# Doc: https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html
+
+[Unit]
+Description=A file list/WebDAV program that supports multiple storages
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+TimeoutStartSec=900
+
+[Container]
+ContainerName=alist
+Image=ghcr.io/mogeko/alist:latest
+ExposeHostPort=5244
+Mount=type=bind,src=/mnt/data,dst=/mnt/data
+UserNS=auto
+AutoUpdate=registry
+
+[Install]
+WantedBy=multi-user.target

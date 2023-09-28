@@ -1,0 +1,14 @@
+# Run Alist by Docker Compose.
+# Doc: https://docs.docker.com/compose/compose-file
+
+version: "3.8"
+
+services:
+  alist:
+    image: ghcr.io/mogeko/alist:latest
+    container_name: alist
+    user: 1000:1000
+    volumes:
+      - /mnt/data:/mnt/data
+    ports:
+      - 5244:5244
