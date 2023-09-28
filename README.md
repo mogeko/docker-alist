@@ -1,12 +1,12 @@
-# container-alist
+# docker-alist
 
-[![Build and Test Container](https://github.com/mogeko/container-alist/actions/workflows/test.yml/badge.svg)](https://github.com/mogeko/container-alist/actions/workflows/test.yml) [![Image Size](https://img.shields.io/docker/image-size/mogeko/alist?logo=docker)](https://github.com/mogeko/container-alist/pkgs/container/alist)
+[![Build and Test Container](https://github.com/mogeko/docker-alist/actions/workflows/test.yml/badge.svg)](https://github.com/mogeko/docker-alist/actions/workflows/test.yml) [![Image Size](https://img.shields.io/docker/image-size/mogeko/alist?logo=docker)](https://github.com/mogeko/docker-alist/pkgs/container/alist)
 
 A distroless container for [Alist](https://github.com/alist-org/alist).
 
-## Usage
+## Usages
 
-## For Docker Users
+### For Docker Users
 
 Set up a Alist server by [Docker](https://www.docker.com):
 
@@ -32,7 +32,7 @@ services:
 
 See the [Complete example](./examples/docker-compose.yml).
 
-## For Podman Users
+### For Podman Users
 
 Set up a Alist server by [Podman](https://podman.io):
 
