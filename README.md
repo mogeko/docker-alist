@@ -2,7 +2,7 @@
 
 [![Build and Test Container](https://github.com/mogeko/container-alist/actions/workflows/test.yml/badge.svg)](https://github.com/mogeko/container-alist/actions/workflows/test.yml) [![Image Size](https://img.shields.io/docker/image-size/mogeko/alist?logo=docker)](https://github.com/mogeko/container-alist/pkgs/container/alist)
 
-A distroless and rootless container for [Alist](https://github.com/alist-org/alist).
+A distroless container for [Alist](https://github.com/alist-org/alist).
 
 ## Usage
 
@@ -30,6 +30,8 @@ services:
       - 5244:5244
 ```
 
+See the [Complete example](./examples/docker-compose.yml).
+
 ## For Podman Users
 
 Set up a Alist server by [Podman](https://podman.io):
@@ -37,6 +39,12 @@ Set up a Alist server by [Podman](https://podman.io):
 ```sh
 podman run -d --name alist --userns=auto -v /path/to/save/data:/mnt/data -p 5244:5244 ghcr.io/mogeko/alist:latest
 ```
+
+Podman supports multiple container orchestration systems:
+
+- Run with [`podman-kube-play`](https://docs.podman.io/en/latest/markdown/podman-kube-play.1.html) using Kubernetes YAML. (See [example](./examples/podman-kube.yml))
+- Run with [Systemd](https://systemd.io) using [Podman Quadlet](https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html). (See [example](./examples/podman-quadlet.container))
+- Run with [Podman Compose](https://github.com/containers/podman-compose) (**not recommended**).
 
 ## First Run
 

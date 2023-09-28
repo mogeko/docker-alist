@@ -1,0 +1,50 @@
+# Run Alist by `podman-kube-play` with Kubernetes YAML file.
+# Doc: https://docs.podman.io/en/latest/markdown/podman-kube-play.1.html
+# Note that the some fields are not supported by `podman-kube-play` yet.
+# See: https://docs.podman.io/en/latest/markdown/podman-kube-play.1.html#podman-kube-play-support
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: alist-data-pvc
+  namespace: alist-production
+  annotations:
+    volume.podman.io/device: /mnt/data
+    volume.podman.io/type: bind
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alist-deployment
+  namespace: alist-production
+  labels:
+    app: alist
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alist
+  template:
+    metadata:
+      labels:
+        app: alist
+    spec:
+      volumes:
+        - name: alist-data
+          persistentVolumeClaim:
+            claimName: alist-data-pvc
+      containers:
+        - name: alist
+          image: ghcr.io/mogeko/alist:latest
+          ports:
+            - containerPort: 5244
+          volumeMounts:
+            - name: alist-data
+              mountPath: /mnt/data
