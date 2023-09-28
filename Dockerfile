@@ -11,7 +11,7 @@ RUN git clone https://github.com/alist-org/alist.git . \
         --single-branch \
     && bash -e ./build.sh release docker
 
-FROM gcr.io/distroless/base-debian12:nonroot
+FROM gcr.io/distroless/base-debian12:latest
 
 LABEL org.opencontainers.image.author="Zheng Junyi <zhengjunyi@live.comn>"
 
