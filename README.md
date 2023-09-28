@@ -42,13 +42,15 @@ podman run -d --name alist --userns=auto -v /path/to/save/data:/mnt/data -p 5244
 
 Podman supports multiple container orchestration systems:
 
-- Run with [`podman-kube-play`](https://docs.podman.io/en/latest/markdown/podman-kube-play.1.html) using Kubernetes YAML. (See [example](./examples/podman-kube.yml))
-- Run with [Systemd](https://systemd.io) using [Podman Quadlet](https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html). (See [example](./examples/podman-quadlet.container))
+- Run with [`podman-kube-play`](https://docs.podman.io/en/latest/markdown/podman-kube-play.1.html) using Kubernetes YAML (See [example](./examples/podman-kube.yml)).
+- Run with [Systemd](https://systemd.io) using [Podman Quadlet](https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html) (See [example](./examples/podman-quadlet.container)).
 - Run with [Podman Compose](https://github.com/containers/podman-compose) (**not recommended**).
 
 ## First Run
 
 Set a password for the admin account:
+
+> Replace `docker` with `podman` if you use Podman.
 
 ```sh
 # Randomly generate a password.
