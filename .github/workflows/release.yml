@@ -16,7 +16,7 @@ jobs:
         archs: ["amd64", "arm64", "s390x", "ppc64le"]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
       - name: Log in to Docker Hub
         uses: redhat-actions/podman-login@v1.6
         with:
