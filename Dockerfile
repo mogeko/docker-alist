@@ -1,6 +1,6 @@
 FROM docker.io/library/golang:1.21-bookworm as builder
 
-ARG VERSION=3.37.1
+ARG VERSION=3.37.2
 
 WORKDIR /opt/source
 RUN git clone https://github.com/alist-org/alist.git . \
